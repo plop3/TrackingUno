@@ -11,18 +11,20 @@
 
 #define PIN_RA_EN          8 // Pin enable
 
-#define PIN_RA_STEP 5
-#define PIN_RA_DIRECTION 2
+#define PIN_RA_STEP 5		// Pin Step
+#define PIN_RA_DIRECTION 2	// Pin Dir
 
-#define PIN_8X  A0
-#define PIN_RA_PLUS   A1
-#define PIN_RA_MINUS  A2
-#define PIN_RA_ENABLE    A3
+#define PIN_8X  A0		// Bouton 8x
+#define PIN_RA_PLUS   A1	// Bouton Avance
+#define PIN_RA_MINUS  A2	// Bouton Retour
+#define PIN_RA_ENABLE    A3	// Interrupteur M/A
+
 const unsigned int STEP_SIGNAL_DURATION = 1000;         // microseconds
 const unsigned long STEP_INTERVAL_SIDEREAL = 32609;     // 58696 microseconds
 const unsigned long STEP_INTERVAL_2X_SIDEREAL = 16304;  // 29348 microseconds
 const unsigned long STEP_INTERVAL_8X_SIDEREAL = 4076;   // 7337 microseconds
 unsigned long lastRightAscensionStepTime;
+
 void setup()
 {
   pinMode(PIN_RA_STEP, OUTPUT);
@@ -63,6 +65,7 @@ void loop()
   if ((now - lastRightAscensionStepTime) >= STEP_SIGNAL_DURATION)
     digitalWrite(PIN_RA_STEP, LOW);
 }
+
 void setRightAscensionDirection()
 {
   if (digitalRead(PIN_RA_MINUS) == HIGH)
@@ -74,6 +77,7 @@ void setRightAscensionDirection()
     digitalWrite(PIN_RA_DIRECTION, LOW);                // clockwise
   }
 }
+
 unsigned long getRightAscensionStepInterval()
 {
   if ((digitalRead(PIN_8X) == LOW) && isRightAscensionButtonPressed())
@@ -82,6 +86,7 @@ unsigned long getRightAscensionStepInterval()
     return STEP_INTERVAL_2X_SIDEREAL;
   return STEP_INTERVAL_SIDEREAL;
 }
+
 boolean isRightAscensionButtonPressed()
 {
   return (digitalRead(PIN_RA_MINUS) == LOW) || (digitalRead(PIN_RA_PLUS) == LOW);
