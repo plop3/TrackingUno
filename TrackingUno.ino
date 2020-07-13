@@ -20,9 +20,10 @@
 #define PIN_RA_ENABLE    A3	// Interrupteur M/A
 
 const unsigned int STEP_SIGNAL_DURATION = 1000;         // microseconds
-const unsigned long STEP_INTERVAL_SIDEREAL = 32609;     // 58696 microseconds
-const unsigned long STEP_INTERVAL_2X_SIDEREAL = 16304;  // 29348 microseconds
-const unsigned long STEP_INTERVAL_8X_SIDEREAL = 4076;   // 7337 microseconds
+                                                        // 40      72 Dents poulie 
+const unsigned long STEP_INTERVAL_SIDEREAL = 58696;     // 58696 / 32609 microseconds
+const unsigned long STEP_INTERVAL_2X_SIDEREAL = 29348;  // 29348 / 16304 microseconds
+const unsigned long STEP_INTERVAL_8X_SIDEREAL = 7337;   // 7337  / 4076  microseconds
 unsigned long lastRightAscensionStepTime;
 
 void setup()
