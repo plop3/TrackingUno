@@ -19,6 +19,7 @@
 #define PIN_RA_MINUS  A2	// Bouton Retour
 #define PIN_RA_ENABLE    A3	// Interrupteur M/A
 
+// STEP_INTERVAL_SIDERAL = (3600 * 24 * 1E6) / (Nbre dents * (Poulie1 / Poulie2) * Nbre pas * µPas )
 const unsigned int STEP_SIGNAL_DURATION = 1000;         // microseconds
                                                         // 40      72 Dents poulie 
 const unsigned long STEP_INTERVAL_SIDEREAL = 58696;     // 58696 / 32609 microseconds
